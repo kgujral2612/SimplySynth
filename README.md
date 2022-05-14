@@ -5,9 +5,10 @@ Implementation of a simplistic synthesizer in Python
 ## Libraries
 Please install these libraries using the following bash command:
  ```bash
+ pip install mido
  pip install numpy
  pip install soundaudio
- pip install MIDIfile
+ pip install scipy
  ````
 
 ## Vision
