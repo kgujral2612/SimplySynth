@@ -1,30 +1,37 @@
-
+import numpy as np
 from mido import MidiFile, tick2second
 from collections import defaultdict
 
 
 class Midi_Helper:
 
-    def midi_file_reader(self, path):
-        midi_file = MidiFile(path, clip=True)
+    def input_midifile(wave_path):
+        midi_file = MidiFile(wave_path)
         return midi_file
 
-    def ticks_to_ms(self, tempo, ticks, ticks_per_beat):
-        tick_ms = (60000.0 / tempo) / ticks_per_beat
-        return ticks * tick_ms
+    def note_to_freq(note, concert_A=440.0):
+        return (2.0 ** ((note - 69) / 12.0)) * concert_A
 
-    def midi_file_interpreter(self, result):
-        tempo = 500000
-        current_notes = defaultdict(dict)
-        current_pos = 0.0
+    def ticks_to_s(ticks,tick_per_beat):
+        #tempo is 100
+        tick_ms = (60000.0 / 100) / tick_per_beat
+        return (ticks * tick_ms)/1000
 
-        for i in range(len(result.tracks)):
-            track = result.tracks[i]
-
-            for event in track:
-                current_pos += self.ticks_to_ms(event.time)
-                if event.type == 'note_on':
-                    current_notes[event.channel][event.note] = (current_pos, event)
-                elif event.type == 'set_tempo':
-                    tempo = event.tempo
-
+    def midi_info(midifile):
+        count=0
+        for tracks in midifile.tracks:
+            count+=1
+        track_info=np.empty((count,0)).tolist()
+        count=0
+        for track in midifile.tracks:
+            duration=0
+            for msg in track:
+                if msg.type == 'note_off':
+                    duration=Midi_Helper.ticks_to_s(msg.time-duration, midifile.ticks_per_beat)
+                    frequency = Midi_Helper.note_to_freq(msg.note)           
+                    track_info[count].append((frequency,duration))
+                if msg.type == 'note_on':
+                    duration=msg.time
+            count+=1
+        
+        return track_info
