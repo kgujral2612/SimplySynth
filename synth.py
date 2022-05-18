@@ -7,10 +7,10 @@
 
 import simpleaudio as sa
 from scipy.io import wavfile
+from Helpers import MidiHelper, PitchHelper
 from Oscillators import Sine, Square, SawTooth, Triangle
-from mido import MidiFile
-from collections import defaultdict
-from Helpers import MidiHelper
+from WaveAdders import WaveAdder
+
 import argparse
 
 cmd = argparse.ArgumentParser(prog='Tuner',
@@ -26,29 +26,42 @@ args = cmd.parse_args()
 wave_path = args.wav_path
 
 
-
-
 result = MidiHelper.Midi_Helper.input_midifile(wave_path)
 midi_info_list = MidiHelper.Midi_Helper.midi_info(result)
 for tracks in midi_info_list:
     for info in tracks:
         print(info)
-        
 
 
+'''        
+# create a note
+n = PitchHelper.Note("C#", 4)
+nf = PitchHelper.PitchToFreq()
+freq = nf.get_freq(n)
+print(freq)
 
 
-
-
-
-'''
 # create a sine wave at that note
-so = Sine.Sine_Oscillator()
+so = Sine.Sine_Oscillator(freq=freq, duration=1.5)
 rate = 44100
-audio = so.get_wave(freq=freq, sample_rate=rate)
-wavfile.write('sine2.wav', rate, audio)  # writing on to the wav file
+audio = so.get_wave()
+wavfile.write('sine.wav', rate, audio)  # writing on to the wav file
 # play the wave
 play_obj = sa.play_buffer(audio, 1, 2, rate)
 play_obj.wait_done()
 
+
+so = Sine.Sine_Oscillator(freq=440)
+so2 = Sine.Sine_Oscillator(freq=440)
+sq = Square.Square_Oscillator(freq=440)
+st = SawTooth.SawTooth_Oscillator(freq=440)
+t = Triangle.Triangle_Oscillator(freq=440)
+osc = [so, so2, sq, st, t]
+wv = WaveAdder.Wave_Adder(osc)
+final = wv.mixer()
+wavfile.write('added.wav', rate, final)
+play_obj = sa.play_buffer(final, 1, 2, rate)
+play_obj.wait_done()
+
 '''
+
