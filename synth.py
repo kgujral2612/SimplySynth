@@ -7,10 +7,10 @@
 
 import simpleaudio as sa
 from scipy.io import wavfile
-from Helpers import MidiHelper, PitchHelper
-from Oscillators import Sine, Square, SawTooth, Triangle
+from Helpers import MidiHelper
+from Oscillators import Sine
 from WaveAdders import WaveAdder
-
+from mido import tick2second
 import argparse
 
 cmd = argparse.ArgumentParser(prog='Tuner',
@@ -28,10 +28,23 @@ wave_path = args.wav_path
 
 result = MidiHelper.Midi_Helper.input_midifile(wave_path)
 midi_info_list = MidiHelper.Midi_Helper.midi_info(result)
-for tracks in midi_info_list:
-    for info in tracks:
-        print(info)
 
+#for track in result.tracks:   
+#    for msg in track:
+#        print(msg)
+#    break
+
+count=0
+for tracks in midi_info_list: 
+        for info in tracks:
+            print(info)
+            #so = Sine.Sine_Oscillator(freq=info[0], duration=info[1])
+            #rate = 44100
+            #audio = so.get_wave()
+            # play the wave
+            #play_obj = sa.play_buffer(audio, 1, 2, rate)
+            #play_obj.wait_done()  
+    
 
 '''        
 # create a note
