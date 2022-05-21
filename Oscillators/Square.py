@@ -5,7 +5,7 @@ import numpy as np
 
 class Square_Oscillator:
 
-    def __init__(self, freq=440, amp=1, phase=0, sample_rate=44_100, wave_range=(-1, 1), threshold=0, duration=1):
+    def __init__(self, freq=440, amp=1, phase=0, sample_rate=48000, wave_range=(-1, 1), threshold=0, duration=1):
         self.freq = freq
         self.amp = amp
         self.phase = phase
