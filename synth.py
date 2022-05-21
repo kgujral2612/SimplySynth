@@ -9,10 +9,11 @@ import simpleaudio as sa
 from scipy.io import wavfile
 from Helpers import MidiHelper
 from Oscillators import Sine
-from WaveAdders import WaveAdder
+from AdditiveSynthesis import WaveAdder, WaveTable
 from mido import tick2second
 import argparse
 
+'''
 cmd = argparse.ArgumentParser(prog='Tuner',
                               usage='%(prog)s [options] path',
                               description='Displaying the frequency of either a live microphone or a given wavefile.')
@@ -23,28 +24,32 @@ cmd.add_argument('wav_path',
                  type=str,
                  help='Enter the path of the WAV file that needs to be tuned.')
 args = cmd.parse_args()
-wave_path = args.wav_path
+wave_path = args.wav_path'''
 
+wave_path = "Files/test_midi1.mid"
 
 result = MidiHelper.Midi_Helper.input_midifile(wave_path)
-midi_info_list = MidiHelper.Midi_Helper.midi_info(result)
+t_count = len(result.tracks) - 1
+if result.length > 0:
+    midi_info_list = MidiHelper.Midi_Helper.midi_info(result)
+    val = 0
+    key = 0
+    for k, v in midi_info_list.items():
+        print(k, v)
+        key = k
+        val = v
 
-#for track in result.tracks:   
-#    for msg in track:
-#        print(msg)
-#    break
+    rate = 44100
+    x = key
+    y = val[-1]
+    duration = x + y[1]
 
-count=0
-for tracks in midi_info_list: 
-        for info in tracks:
-            print(info)
-            #so = Sine.Sine_Oscillator(freq=info[0], duration=info[1])
-            #rate = 44100
-            #audio = so.get_wave()
-            # play the wave
-            #play_obj = sa.play_buffer(audio, 1, 2, rate)
-            #play_obj.wait_done()  
-    
+    # audio = WaveTable.WaveTable(midi_info_list, duration, t_count, rate).tabulate()
+    audio = WaveTable.WaveTable(midi_info_list, duration, t_count, rate).tabulatefunc()
+    wavfile.write('twinkle.wav', rate, audio)  # writing on to the wav file
+    play_obj = sa.play_buffer(audio, 1, 2, rate)
+    play_obj.wait_done()
+
 
 '''        
 # create a note
@@ -77,4 +82,3 @@ play_obj = sa.play_buffer(final, 1, 2, rate)
 play_obj.wait_done()
 
 '''
-

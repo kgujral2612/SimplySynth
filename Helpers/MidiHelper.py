@@ -1,4 +1,3 @@
-import time
 import numpy as np
 from mido import MidiFile, tick2second
 from collections import defaultdict
@@ -24,16 +23,17 @@ class Midi_Helper:
                     return tempo_info[i-1][0]
             
     def midi_info(midifile):
-        count=0
+        count = 0
 
         for tracks in midifile.tracks:
-            count+=1
+            count += 1
 
-        track_info=np.empty((count,0)).tolist()
-        count=0
-        tempo=500000
-        tempo_info=[]
-        time_tempo=0.0
+        track_info = np.empty((count, 0)).tolist()
+        track_info_dict = {}
+        count = 0
+        tempo = 500000
+        tempo_info = []
+        time_tempo = 0.0
 
         for track in midifile.tracks:
             time_elapsed = 0.0
@@ -43,19 +43,22 @@ class Midi_Helper:
                 time_elapsed += tick2second(msg.time, midifile.ticks_per_beat, tempo) 
 
                 if msg.type == 'note_on': 
-                    tempo=Midi_Helper.tempo_calc(time_elapsed, tempo_info)                  
+                    tempo = Midi_Helper.tempo_calc(time_elapsed, tempo_info)
                     notes_dict[msg.channel][msg.note] = (time_elapsed) 
 
                 if msg.type == 'note_off': 
                     tempo=Midi_Helper.tempo_calc(time_elapsed, tempo_info)                  
                     start_pos = notes_dict[msg.channel].pop(msg.note)            
                     duration = (time_elapsed - start_pos)
-                    track_info[count].append((Midi_Helper.note_to_freq(msg.note),duration, start_pos))
+                    track_info[count].append((Midi_Helper.note_to_freq(msg.note), duration, start_pos))
+                    val_list = track_info_dict[start_pos] if start_pos in track_info_dict else []
+                    val_list.append((Midi_Helper.note_to_freq(msg.note), duration))
+                    track_info_dict[start_pos] = val_list
 
                 if msg.type == 'set_tempo':
-                    time_tempo+=msg.time
-                    tempo_info.append((msg.tempo,time_tempo))
+                    time_tempo += msg.time
+                    tempo_info.append((msg.tempo, time_tempo))
         
-            count+=1
-        return track_info
+            count += 1
+        return track_info_dict
 
