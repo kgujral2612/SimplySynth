@@ -23,12 +23,6 @@ class Midi_Helper:
                     return tempo_info[i-1][0]
             
     def midi_info(midifile):
-        count = 0
-
-        for tracks in midifile.tracks:
-            count += 1
-
-        track_info = np.empty((count, 0)).tolist()
         track_info_dict = {}
         count = 0
         tempo = 500000
@@ -50,7 +44,6 @@ class Midi_Helper:
                     tempo=Midi_Helper.tempo_calc(time_elapsed, tempo_info)                  
                     start_pos = notes_dict[msg.channel].pop(msg.note)            
                     duration = (time_elapsed - start_pos)
-                    track_info[count].append((Midi_Helper.note_to_freq(msg.note), duration, start_pos))
                     val_list = track_info_dict[start_pos] if start_pos in track_info_dict else []
                     val_list.append((Midi_Helper.note_to_freq(msg.note), duration))
                     track_info_dict[start_pos] = val_list
