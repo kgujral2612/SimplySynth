@@ -1,3 +1,7 @@
+#
+# reference: https://en.wikipedia.org/wiki/Additive_synthesis
+#
+
 import numpy as np
 
 
