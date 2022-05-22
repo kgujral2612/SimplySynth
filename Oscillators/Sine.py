@@ -5,7 +5,7 @@ import numpy as np
 
 class Sine_Oscillator:
 
-    def __init__(self, freq, amp=1, phase=0, sample_rate=44100, duration=1):
+    def __init__(self, freq, amp=1, phase=0, sample_rate=48000, duration=1):
         self.freq = freq
         self.amp = amp
         self.phase = phase

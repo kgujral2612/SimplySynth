@@ -1,10 +1,9 @@
-from Oscillators import Sine, Square, SawTooth, Triangle
 import numpy as np
 
 
 class Wave_Adder:
 
-    def __init__(self, oscillators, samples=44100):
+    def __init__(self, oscillators, samples=48000):
         self.oscillators = oscillators
         self.samples = samples
 
