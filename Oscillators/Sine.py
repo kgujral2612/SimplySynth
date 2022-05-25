@@ -1,3 +1,7 @@
+#
+# reference: https://python.plainenglish.io/making-a-synth-with-python-oscillators-2cb8e68e9c3b
+#
+
 import math
 import itertools
 import numpy as np
@@ -23,7 +27,7 @@ class Sine_Oscillator:
     def get_wave(self):
         osc = self.sin_osc()
         y = np.array(self.get_iterator(osc), dtype=np.float32)
-        audio = y * (2 ** 15 // 2) / np.max(np.abs(y))  # ensuring the correct range for the amplitude
+        audio = y * (2 ** 15 // 2) / max(0.001, np.max(np.abs(y)))  # ensuring the correct range for the amplitude
         return audio.astype(np.int16)
 
 

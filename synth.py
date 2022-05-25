@@ -10,7 +10,7 @@ from scipy.io import wavfile
 from Helpers import MidiHelper
 from Oscillators import Sine
 from AdditiveSynthesis import WaveAdder, WaveTable
-from mido import tick2second
+from DataAugmentation import Effects
 import argparse
 
 cmd = argparse.ArgumentParser(prog='Tuner',
@@ -46,6 +46,12 @@ if result.length > 0:
     wavfile.write('Files/wav files/twinkle_triangle.wav', rate, audio)  # writing on to the wav file
     #play_obj = sa.play_buffer(audio, 1, 2, rate)
     #play_obj.wait_done()
+    # adding white noise
+    augmented_signal = Effects.time_stretch(audio, 0.05)
+    wavfile.write('Files/wav files/twinkle_time_stretch.wav', rate, augmented_signal)  # writing on to the wav file
+    play_obj = sa.play_buffer(augmented_signal, 1, 2, rate)
+    play_obj.wait_done()
+
 
 
 
