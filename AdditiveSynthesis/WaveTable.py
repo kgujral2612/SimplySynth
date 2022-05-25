@@ -6,12 +6,11 @@ from Envelopes.Envelope import *
 
 class WaveTable:
 
-    def __init__(self, midi_dict, midi_length, t_count, wave_type=1, envelope=None, sample_rate=48000):
+    def __init__(self, midi_dict, midi_length, wave_type=1, envelope=None, sample_rate=48000):
         self.midi_dict = midi_dict
         self.rate = sample_rate
         self.l = round(midi_length * sample_rate)
         self.song = np.zeros(self.l)
-        self.t_count = t_count
         self.wave_type = wave_type
         self.envelope = envelope
 

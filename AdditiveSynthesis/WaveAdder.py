@@ -5,11 +5,14 @@
 import numpy as np
 
 
+#
+# Adds 2 waves of equal sample rate and duration
+#
 class Wave_Adder:
 
-    def __init__(self, oscillators, samples=48000):
+    def __init__(self, oscillators, duration=1, sample_rate=48000):
         self.oscillators = oscillators
-        self.samples = samples
+        self.samples = round(duration * sample_rate)
 
     def mixer(self):
         audio = np.zeros(self.samples)

@@ -11,7 +11,7 @@ def oboe(frequency, duration, components=10):
         a = coeffs[i]
         sine_list.append(Sine.Sine_Oscillator(freq=f, amp=a, duration=duration))
         f = f + frequency
-    return WaveAdder.Wave_Adder(sine_list).mixer()
+    return WaveAdder.Wave_Adder(sine_list, duration=duration).mixer()
 
 
 def flute(frequency, duration, components=10):
@@ -19,7 +19,7 @@ def flute(frequency, duration, components=10):
     f = frequency
     a = 1.0
     for i in range(components):
-        sine_list.append(Sine.Sine_Oscillator(freq=f, amp=a, duration= duration))
+        sine_list.append(Sine.Sine_Oscillator(freq=f, amp=a, duration=duration))
         f += frequency
         a /= 2.0
     return WaveAdder.Wave_Adder(sine_list).mixer()
