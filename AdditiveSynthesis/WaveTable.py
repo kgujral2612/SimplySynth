@@ -1,6 +1,7 @@
 import numpy as np
 from Oscillators import Sine
-from Envelopes import envelope
+from Envelopes import Envelope
+
 
 class WaveTable:
 
@@ -11,11 +12,10 @@ class WaveTable:
         self.song = np.zeros(self.l)
         self.t_count = t_count
 
-
     def tabulate(self):
         for start_time, notes in self.midi_dict.items():
             for note in notes:
-                #self.overlay(envelope.Envelope.adsr(Sine.Sine_Oscillator(freq=note[0], duration=note[1]).get_wave(),attack=0.2,decay=0.1,sustain=0.8,release =0.2), start_time)
+                #self.overlay(Envelope.adsr(Sine.Sine_Oscillator(freq=note[0], duration=note[1]).get_wave(),attack=0.2,decay=0.1,sustain=0.8,release =0.2), start_time)
                 self.overlay(Sine.Sine_Oscillator(freq=note[0], duration=note[1]).get_wave(), start_time)
         self.song = self.song * (2 ** 15 // 2) / np.max(np.abs(self.song))
         return self.song.astype(np.int16)
