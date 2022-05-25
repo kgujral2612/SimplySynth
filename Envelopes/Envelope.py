@@ -12,7 +12,7 @@ def trap_ar_ramp_calc(data_len, ramp):
     return ramp_data
 
 
-def trap_ar(samples, ramp):
+def trap_ar(samples, ramp=0.5):
     ramp_data = trap_ar_ramp_calc(len(samples), ramp)
     final_data = (np.multiply(samples, ramp_data)).astype(np.int16)
     return final_data
@@ -38,7 +38,7 @@ def adsr_ramp_calc(data_len, attack, decay, sustain, release):
     return ramp_data
 
 
-def adsr(samples, attack, decay, sustain, release):
+def adsr(samples, attack=0.2, decay=0.1, sustain=0.8, release=0.2):
     ramp_data = adsr_ramp_calc(len(samples), attack=attack, decay=decay, sustain=sustain, release=release)
     final_data = (np.multiply(samples, ramp_data)).astype(np.int16)
     return final_data
