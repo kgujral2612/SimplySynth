@@ -11,6 +11,7 @@ from Helpers import MidiHelper
 from Oscillators import Sine
 from AdditiveSynthesis import WaveAdder, WaveTable
 from DataAugmentation import Effects
+
 import argparse
 
 cmd = argparse.ArgumentParser(prog='Tuner',
@@ -33,6 +34,7 @@ if result.length > 0:
     midi_info_list = MidiHelper.Midi_Helper.midi_info(result)
     val = 0
     key = 0
+    #print(midi_info_list)
     for k, v in midi_info_list.items():
         key = k
         val = v
@@ -43,14 +45,15 @@ if result.length > 0:
     duration = x + y[1]
 
     audio = WaveTable.WaveTable(midi_info_list, duration, t_count, rate).tabulate()
-    wavfile.write('Files/wav files/twinkle_triangle.wav', rate, audio)  # writing on to the wav file
-    #play_obj = sa.play_buffer(audio, 1, 2, rate)
-    #play_obj.wait_done()
-    # adding white noise
-    augmented_signal = Effects.time_stretch(audio, 0.05)
-    wavfile.write('Files/wav files/twinkle_time_stretch.wav', rate, augmented_signal)  # writing on to the wav file
-    play_obj = sa.play_buffer(augmented_signal, 1, 2, rate)
+    #audio = Effects.low_pass_filter(audio)
+    wavfile.write('Files/wav files/twinkle_test6.wav', rate, audio)  # writing on to the wav file
+    play_obj = sa.play_buffer(audio, 1, 2, rate)
     play_obj.wait_done()
+    # adding white noise
+    #augmented_signal = Effects.time_stretch(audio.astype(float), 0.05)
+    #wavfile.write('Files/wav files/twinkle_time_stretch.wav', rate, augmented_signal)  # writing on to the wav file
+    #play_obj = sa.play_buffer(augmented_signal, 1, 2, rate)
+    #play_obj.wait_done()
 
 
 
