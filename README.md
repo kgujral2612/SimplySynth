@@ -9,11 +9,41 @@ Please install these libraries using the following bash command:
  pip install numpy
  pip install soundaudio
  pip install scipy
+ pip install itertools
+ pip install librosa
  ````
 
-## Vision
+## Features
+### Modes
+- Mode A: Input notes and corresponding duration in form of text files
+- Mode B: MIDI input file
+- Mode C: Aleatoric
 
-Implement a synthesizer program that plays a song fed from a file containing MIDI values. Given a MIDI value, the synthesizer should evaluate the note and the corresponding frequency.
+### Options
+#### Wave Type
+- Sine
+- Square
+- Sawtooth
+- Triangle
+- Oboe 
+- Flute
+- Bell
+
+#### Envelopes
+- Trapezoidal
+- ADSR
+
+#### Effects
+- White noise
+- Environmental noise
+- Time Stretch
+- Pitch Scaling 
+- Inverse Polarity
+- Random Gain
+
+### Filters
+- Low-pass band
+- High-pass band
 
 ## Authors
 - Harmandeep Singh

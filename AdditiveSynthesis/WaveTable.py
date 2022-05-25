@@ -1,6 +1,5 @@
-import numpy as np
-from Oscillators import Sine, Square, SawTooth, Triangle
-from AdditiveSynthesis.Instruments.Sounds import *
+from Oscillators import Square, SawTooth
+from Instruments.Sounds import *
 from Envelopes.Envelope import *
 
 
@@ -24,7 +23,12 @@ class WaveTable:
             return SawTooth.SawTooth_Oscillator(freq=f, duration=d).get_wave()
         elif self.wave_type == 4:
             return Triangle.Triangle_Oscillator(freq=f, duration=d).get_wave()
-        return oboe(frequency=f, duration=d)
+        elif self.wave_type == 5:
+            return oboe(frequency=f, duration=d)
+        elif self.wave_type == 6:
+            return flute(frequency=f, duration=d)
+        elif self.wave_type == 7:
+            return bell(frequency=f, duration=d)
 
     def get_envelope(self, audio):
         if self.envelope is None:

@@ -19,9 +19,9 @@ beats = [1, 1, 1, 3, 1, 1, 1, 3,
          1, 1, 1, 2, 0.5, 1, 4
          ]
 bpm = 120
-play_notes(notes=notes, beats=beats, bpm=120, wave_type=5, effect=2, envelope=2)
+play_notes(notes=notes, beats=beats, bpm=bpm, wave_type=5, effect=1, envelope=2)
 
 # Mode-B
-
 path = "Files/test_midi1.mid"
 play_midi(path, wave_type=3)
+
