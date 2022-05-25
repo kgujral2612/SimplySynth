@@ -33,21 +33,31 @@ def env_noise(signal, noise_factor=0.1):
 
 
 # time stretch
-def time_stretch(signal, stretch_rate=0.1):
-    return librosa.effects.time_stretch(signal, stretch_rate)
+def time_stretch(signal, stretch_rate=0.8):
+    signal = signal.astype(np.float32)
+    augmented_signal = librosa.effects.time_stretch(signal, rate=stretch_rate)
+    augmented_signal = augmented_signal * (2 ** 15 // 2) / np.max(np.abs(augmented_signal))
+    return augmented_signal.astype(np.int16)
 
 
 # pitch scaling
 def pitch_scaling(signal, sample_rate=48000, num_semitones=1):
-    return librosa.effects.pitch_shift(signal, sample_rate, num_semitones)
+    signal = signal.astype(np.float32)
+    augmented_signal = librosa.effects.pitch_shift(signal, sr=sample_rate, n_steps=num_semitones)
+    augmented_signal = augmented_signal * (2 ** 15 // 2) / np.max(np.abs(augmented_signal))
+    return augmented_signal.astype(np.int16)
 
 
 # inverse polarity
 def inverse_pol(signal):
-    return np.multiply(signal, -1)
+    augmented_signal = np.multiply(signal, -1)
+    augmented_signal = augmented_signal * (2 ** 15 // 2) / np.max(np.abs(augmented_signal))
+    return augmented_signal.astype(np.int16)
 
 
 # random gain
 def random_gain(signal, min_gain_factor=0, max_gain_factor=1):
     gain_factor = random.uniform(min_gain_factor, max_gain_factor)
-    return np.multiply(signal, gain_factor)
+    augmented_signal = np.multiply(signal, gain_factor)
+    augmented_signal = augmented_signal * (2 ** 15 // 2) / np.max(np.abs(augmented_signal))
+    return augmented_signal.astype(np.int16)

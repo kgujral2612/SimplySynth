@@ -4,7 +4,7 @@
 # A) Notes + Tempo, B) Midi Path, C) Aleatoric
 ###########################################################################
 # ***** Options *****
-# Wave Type: Sine (1), Square (2), Sawtooth (3), Triangle (4), Oboe (5)
+# Wave Type: Sine (1), Square (2), Sawtooth (3), Triangle (4), Oboe (5), Flute(6), Bell (7)
 
 # Envelopes: Trapezoidal (1), ADSR (2)
 
@@ -45,10 +45,12 @@ def apply_effect(audio, effect_type):
     elif effect_type == 2:
         return env_noise(audio)
     elif effect_type == 3:
-        return pitch_scaling(audio)
+        return time_stretch(audio)
     elif effect_type == 4:
+        return pitch_scaling(audio)
+    elif effect_type == 5:
         return inverse_pol(audio)
-    else:
+    elif effect_type == 6:
         return random_gain(audio)
 
 
