@@ -135,7 +135,27 @@ def play_midi(path=None, wave_type=1, envelope=None, effect=None, filter_type=No
 
 
 # Mode-C: Aleatoric
-def play_aleatoric(root_note, bpm, beats,  wave_type=1, envelope=None, effect=None, filter_type=None):
+def play_aleatoric(root_note, bpm, beats,  wave_type=1, envelope=None):
+    duration = 60/bpm
+    rate = 48000
+    root = get_num_from_name(root_note)
+    key_arr = [root+2, root+4, root+5, root+7, root+9, root+11, root+12]
+    root_freq = get_freq_from_name(root_note)
+    duration_freq_dict = {}
+    duration_freq_dict[0]=[(root_freq,duration)]
+    curr=duration
+    final = []
+    while True:
+        root_data = WaveTable.WaveTable(duration_freq_dict, duration, wave_type, envelope, rate).tabulate()
+        final = root_data
+        for i in range(beats-1):
+            note = random.choice(key_arr)
+            note_freq = get_freq_from_num(note)
+            duration_freq_dict[0]=[(note_freq,duration)]
+            note_data = WaveTable.WaveTable(duration_freq_dict, duration, wave_type, envelope, rate).tabulate()
+            final = np.concatenate((final,note_data),axis=None)
+        play_obj = sa.play_buffer(final, 1, 2, 48000)
+        play_obj.wait_done()
     return None
 
 
