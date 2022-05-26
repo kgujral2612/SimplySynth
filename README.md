@@ -1,6 +1,8 @@
 # SimplySynth
 
 Implementation of a simplistic synthesizer in Python
+![Main Page](Files/Images/homescreen.JPG)
+![Menu Page](Files/Images/mode1screen.JPG)
 
 ## Libraries
 Please install these libraries using the following bash command:
