@@ -20,7 +20,7 @@ Interface = pygame.display.set_mode((1000, 800))
 clock = pygame.time.Clock()
 
 background = pygame.Surface((1000, 800))
-background.fill(pygame.Color('#FFF8DC'))
+background.fill(pygame.Color('#B2DFEE'))
 
 manager = pygame_gui.UIManager((1000, 800), 'Files/themes.json')
 

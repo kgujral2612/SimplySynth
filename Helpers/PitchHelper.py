@@ -8,7 +8,7 @@ def get_freq_from_num(num):
     return 440 * (2**((num-69)/12))
 
 
-def get_freq_from_name(name):
+def get_num_from_name(name):
     note_num = {"A0": 21, "A#0": 22, "Bb0": 22, "B0": 23,
                 "C1": 24, "C#1": 25, "Db1": 25, "D1": 26, "D#1": 27, "Eb1": 27, "E1": 28, "F1": 29,
                 "F#1": 30, "Gb1": 30, "G1": 31, "G#1": 32, "Ab1": 32, "A1": 33, "A#1": 34, "Bb1": 34, "B1": 35,
@@ -29,7 +29,8 @@ def get_freq_from_name(name):
                 "C9": 120, "C#9": 121, "Db9": 121, "D9": 122, "D#9": 123, "Eb9": 123, "E9": 124, "F9": 125,
                 "F#9": 126, "Gb9": 126, "G9": 127, "G#9": 128, "Ab9": 128, "A9": 129, "A#9": 130, "Bb9": 130, "B9": 131,
                 }
-    return get_freq_from_num(note_num[name.upper()])
+    return note_num[name.upper()]
 
 
-
+def get_freq_from_name(name):
+    return get_freq_from_num(get_num_from_name(name))
