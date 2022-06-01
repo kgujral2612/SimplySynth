@@ -8,7 +8,7 @@ import librosa
 
 
 # white noise
-def white_noise(signal, noise_factor=0.1):
+def white_noise(signal, noise_factor=0.05):
     noise = np.multiply(np.random.normal(0, signal.std(), signal.size), noise_factor)
     augmented_signal = np.add(signal, noise)
     augmented_signal = augmented_signal * (2 ** 15 // 2) / np.max(np.abs(augmented_signal))
@@ -16,7 +16,7 @@ def white_noise(signal, noise_factor=0.1):
 
 
 # add environmental noise
-def env_noise(signal, noise_factor=0.1):
+def env_noise(signal, noise_factor=0.025):
     sampling_rate, env_signal = wavfile.read("Files/env_noise/forest-night.wav")
     env_noise = np.multiply(env_signal, noise_factor)
     diff = len(signal) - len(env_noise)

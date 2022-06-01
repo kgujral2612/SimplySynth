@@ -58,7 +58,8 @@ def apply_effect(audio, effect_type):
 def play_notes(notes, beats=None, bpm=120, wave_type=1, envelope=None, effect=None, filter_type=None):
     if not notes or len(notes) == 0:
         return None
-
+    if not wave_type:
+        wave_type=1
     # Step-1: Calculate frequencies from notes
     beat_duration = 60 / bpm
     if not beats:
@@ -78,7 +79,8 @@ def play_notes(notes, beats=None, bpm=120, wave_type=1, envelope=None, effect=No
     rate = 48000
     synth_wave_path = create_synth_file_path("Files/play_notes.mid", wave_type, envelope, effect, filter_type)
     audio = WaveTable.WaveTable(duration_freq_dict, duration, wave_type, envelope, rate).tabulate()
-
+    if not wave_type:
+        wave_type=1
     # Step-3: apply filters
     if filter_type:
         audio = apply_filter(audio, filter_type)
@@ -99,7 +101,8 @@ def play_notes(notes, beats=None, bpm=120, wave_type=1, envelope=None, effect=No
 def play_midi(path=None, wave_type=1, envelope=None, effect=None, filter_type=None):
     if path is None:
         return None
-
+    if not wave_type:
+        wave_type=1
     # Step-1: read midi file
     result = MidiHelper.Midi_Helper.input_midifile(path)
     if result.length > 0:
