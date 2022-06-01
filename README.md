@@ -19,6 +19,11 @@ Please install these libraries using the following bash command:
  pip install librosa
  ````
 
+ ## Running the code
+ ```bash
+ python synth.py
+ ````
+
 ## Features
 ### Modes
 <ol>
@@ -50,6 +55,7 @@ Low-pass band, High-pass band
 
 ## Known Issues
 - Unable to play midi files that don't consistently contain a "note-off" message for every "note-on"
+
 
 ## Extensions
 <ol>
