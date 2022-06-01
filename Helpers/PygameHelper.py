@@ -143,7 +143,7 @@ def mode_1_window():
                         lines = n.readlines()
                         for line in lines:
                             line = line.strip()
-                            note_arr.append(line.replace('""',''))
+                            note_arr.append(line.replace('"',''))
                         n.close()
                     if beat_path != None:
                         with open(beat_path) as b:
@@ -152,7 +152,7 @@ def mode_1_window():
                                 beat_arr.append(float(line))
                             b.close()
 
-                    InterfaceHandler.play_notes(notes = note_arr, beats = beat_arr, bpm=90 ,wave_type=wavetype, effect=effects, filter_type=filters, envelope=envelopes)
+                    InterfaceHandler.play_notes(notes = note_arr, beats = beat_arr, wave_type=wavetype, effect=effects, filter_type=filters, envelope=envelopes)
                 if path1_input_rect.collidepoint(event.pos):
                     # Toggle the active_1 variable.
                     active_1 = not active_1
@@ -454,7 +454,7 @@ def mode_2_window():
         filter_text1 = heading_font.render('Low-Pass', True,'#FFF8DC')
         effect_text1 = heading_font.render('White Noise', True,'#FFF8DC')
         effect_text2 = heading_font.render('Environmental Noise', True,'#FFF8DC')
-        effect_text3 = heading_font.render('Tome Stretch', True,'#FFF8DC')
+        effect_text3 = heading_font.render('Time Stretch', True,'#FFF8DC')
         effect_text4 = heading_font.render('Pitch Scaling', True,'#FFF8DC')
         effect_text5 = heading_font.render('Inverse Polarity', True,'#FFF8DC')
         effect_text6 = heading_font.render('Random Gain', True,'#FFF8DC')
@@ -465,9 +465,9 @@ def mode_2_window():
         text = base_font.render('Midi File Path:', True, '#4D4D4D')
 
         heading_text1 = base_font.render('Wavetype', True,'#4D4D4D')
-        heading_text2 = base_font.render('Envelope', True,'#4D4D4D')
+        heading_text2 = base_font.render('Effects', True,'#4D4D4D')
         heading_text3 = base_font.render('Filters', True, '#4D4D4D')
-        heading_text4 = base_font.render('Effects', True,  '#4D4D4D')
+        heading_text4 = base_font.render('Envelope', True,  '#4D4D4D')
 
         play_button_text = base_font.render('Play', True, '#FFA07A')
         text_surface = heading_font.render(user_text, True, '#FFF8DC')
@@ -606,11 +606,6 @@ def mode_3_window():
                     coloren=np.zeros(3)
                     coloren[2]=1
                 if play_button_rect.collidepoint(event.pos):
-                    print(wavetype)
-                    print(envelopes)
-                    print(root_note)
-                    print(tempo)
-                    print(beats)
 
                     InterfaceHandler.play_aleatoric(root_note=root_note,bpm = int(tempo),beats=int(beats),wave_type=wavetype, envelope=envelopes)
                 # If the user clicked on the input_box rect.
