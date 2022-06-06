@@ -45,7 +45,7 @@ python synth.py
 Alternatively, you could also run examples:
 ```bash
 python examples.py
-
+```
 ## Features
 ### Modes
 <ol>
