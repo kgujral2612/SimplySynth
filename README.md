@@ -1,14 +1,33 @@
 # SimplySynth
 
 Implementation of a simplistic synthesizer in Python
-<br />
-<img src="Files/Images/homescreen.JPG" alt="main-page" width="550"/>
-<br />
-<img src="Files/Images/mode1screen.JPG" alt="model-screen" width="550"/>
+<br /><br />
+<img src="Files/Images/homescreen.JPG" alt="main-page" width="480"/>
+<img src="Files/Images/mode1screen.JPG" alt="model-screen" width="480"/>
+## How it went
+Our vision was to build a synthesizer that bears some fundamental characteristics and is also fun to play with. We divided the tasks between the two of us and parallely began working on different pieces in a bottom-up fashion.<br /><br />
+First, we created sine, square, sawtooth and triangle oscillators and tested those using notes fed from a text file. Having tested the waveforms, we were excited to use MIDI file inputs. One of the most intricate parts was reading the MIDI file and transforming it into a datastructure such that multiple notes may begin at the same time or overlapping intervals. Using additive synthesis, we combined multiple waves to deliver one coherent wave.<br /><br />
+Furthermore, we worked on adding effects, filters and envelopes to make the synthesized sound more real. Side by side, we studied about timbre of musical intruments and sound and attempted to synthesize those. We used audacity to compare our shots with sounds of real instruments and improved our attempts incrementally. We were ecstatic after creating the sound of an oboe and then implemented a bell as well as a flute.
+
+## Division of responsibilities
+All the tasks were accomplished through gitlab merge requests and thus can be verified here: [merged requests](https://gitlab.cecs.pdx.edu/sound-engineering/simplysynth/-/merge_requests?scope=all&state=merged)
+| | Tasks  |
+|---|---|
+| Harman | MIDI file input, envelopes, filters, Pygame GUI, flute  |
+|  Kaushambi |  Oscillators, additive synthesis, effects, user interface handler, oboe, bell |
+
+## Lessons learned
+<ol>
+<li>Frequency modulation was more difficult than we expected. We had not accounted for it in the beginning stages where we structured the code.</li>
+<li>Real, natural sounds are beautifully imperfect- simulating the 'imperfectness' is challenging.</li>
+<li>Using Gitlab helped us manage the project.</li>
+</ol>
 
 
-## Libraries
-Please install these libraries using the following bash command:
+
+
+ ## Running the code
+ Please install these libraries using the following bash command:
  ```bash
  pip install mido
  pip install numpy
@@ -19,10 +38,13 @@ Please install these libraries using the following bash command:
  pip install librosa
  ````
 
- ## Running the code
- ```bash
- python synth.py
- ````
+Load the GUI- Note: after typing the file name in the input box, press enter.
+```bash
+python synth.py
+```
+Alternatively, you could also run examples:
+```bash
+python examples.py
 
 ## Features
 ### Modes
@@ -54,8 +76,9 @@ Trapezoidal, ADSR
 Low-pass band, High-pass band
 
 ## Known Issues
-- Unable to play midi files that don't consistently contain a "note-off" message for every "note-on"
-
+- Unable to play midi files that don’t consistently contain a “note-off” message for every “note-on”
+- ‘Click’ sound can be heard while playing some midi files
+- Selecting multiple options on a huge midi file is computationally expensive and takes more time
 
 ## Extensions
 <ol>
