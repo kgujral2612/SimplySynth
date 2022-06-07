@@ -4,7 +4,7 @@
 # A) Notes + Tempo, B) Midi Path, C) Aleatoric
 ###########################################################################
 # ***** Options *****
-# Wave Type: Sine (1), Square (2), Sawtooth (3), Triangle (4), Oboe (5), Flute(6), Bell (7)
+# Wave Type: Sine (1), Square (2), Sawtooth (3), Triangle (4), Oboe (5), Flute(6), Bell (7), Violin (8)
 
 # Envelopes: Trapezoidal (1), ADSR (2)
 
@@ -59,7 +59,7 @@ def play_notes(notes, beats=None, bpm=120, wave_type=1, envelope=None, effect=No
     if not notes or len(notes) == 0:
         return None
     if not wave_type:
-        wave_type=1
+        wave_type = 1
     # Step-1: Calculate frequencies from notes
     beat_duration = 60 / bpm
     if not beats:
@@ -80,7 +80,7 @@ def play_notes(notes, beats=None, bpm=120, wave_type=1, envelope=None, effect=No
     synth_wave_path = create_synth_file_path("Files/play_notes.mid", wave_type, envelope, effect, filter_type)
     audio = WaveTable.WaveTable(duration_freq_dict, duration, wave_type, envelope, rate).tabulate()
     if not wave_type:
-        wave_type=1
+        wave_type = 1
     # Step-3: apply filters
     if filter_type:
         audio = apply_filter(audio, filter_type)
@@ -102,7 +102,7 @@ def play_midi(path=None, wave_type=1, envelope=None, effect=None, filter_type=No
     if path is None:
         return None
     if not wave_type:
-        wave_type=1
+        wave_type = 1
     # Step-1: read midi file
     result = MidiHelper.Midi_Helper.input_midifile(path)
     if result.length > 0:
@@ -146,7 +146,7 @@ def play_aleatoric(root_note, bpm, beats,  wave_type=1, envelope=None):
     root_freq = get_freq_from_name(root_note)
     duration_freq_dict = {}
     duration_freq_dict[0]=[(root_freq,duration)]
-    curr=duration
+    curr = duration
     final = []
     while True:
         root_data = WaveTable.WaveTable(duration_freq_dict, duration, wave_type, envelope, rate).tabulate()
@@ -156,7 +156,7 @@ def play_aleatoric(root_note, bpm, beats,  wave_type=1, envelope=None):
             note_freq = get_freq_from_num(note)
             duration_freq_dict[0]=[(note_freq,duration)]
             note_data = WaveTable.WaveTable(duration_freq_dict, duration, wave_type, envelope, rate).tabulate()
-            final = np.concatenate((final,note_data),axis=None)
+            final = np.concatenate((final, note_data), axis=None)
         play_obj = sa.play_buffer(final, 1, 2, 48000)
         play_obj.wait_done()
     return None

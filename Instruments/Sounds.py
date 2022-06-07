@@ -42,7 +42,8 @@ def bell(frequency, duration, components=9):
     for i in range(components):
         sine_list.append(Sine.Sine_Oscillator(freq=(frequency * freq_coeffs[i]), amp=a, duration=duration))
         a /= 2.0
-    return  white_noise(WaveAdder.Wave_Adder(sine_list, duration=duration).mixer())
+    return white_noise(WaveAdder.Wave_Adder(sine_list, duration=duration).mixer())
+
 
 def violin(frequency, duration, components=20):
     sine_list = []
