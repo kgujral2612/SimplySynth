@@ -1,6 +1,7 @@
 from AdditiveSynthesis import WaveAdder
 from Oscillators import Sine, Triangle
 from DataAugmentation.Effects import *
+from Envelopes import Envelope
 #
 # reference: https://www.projectrhea.org/rhea/index.php/Fourier_analysis_in_Music
 #
@@ -19,15 +20,17 @@ def oboe(frequency, duration, components=10):
 
 
 # flute
-def flute(frequency, duration, components=2):
+def flute(frequency, duration, components=10):
     sine_list = []
-    f = frequency
-    a = 1.0
+    f = 52.49
+    coeffs = [2.6275144, 1971.9965, 773.3403, 416.96512, 920.1261, 184.70355, 78.39568, 88.53661, 25.209017, 4.08456]
     for i in range(components):
-        sine_list.append(Triangle.Triangle_Oscillator(freq=f, amp=a, duration=duration))
-        f += frequency
-        a /= 2.0
-    return WaveAdder.Wave_Adder(sine_list, duration=duration).mixer()
+        a = coeffs[i]
+        sine_list.append(Sine.Sine_Oscillator(freq=f, amp=a, duration=duration))
+        if i==0:
+            f=0
+        f = f + frequency
+    return WaveAdder.Wave_Adder(sine_list, duration=duration).instr_mixer()
 
 
 # bell
@@ -41,3 +44,12 @@ def bell(frequency, duration, components=9):
         a /= 2.0
     return  white_noise(WaveAdder.Wave_Adder(sine_list, duration=duration).mixer())
 
+def violin(frequency, duration, components=20):
+    sine_list = []
+    f = frequency
+    coeffs = [565.67645, 1480.7347, 949.55945, 321.98218, 317.2813, 172.26096, 136.12212, 121.8747, 208.8552, 67.335846, 172.15009, 32.675083, 93.15583, 19.948515, 27.01039, 16.36757, 38.366905, 23.404427, 20.308054, 18.097034]
+    for i in range(components):
+        a = coeffs[i]
+        sine_list.append(Sine.Sine_Oscillator(freq=f, amp=a, duration=duration))
+        f = f + frequency
+    return WaveAdder.Wave_Adder(sine_list, duration=duration).instr_mixer()

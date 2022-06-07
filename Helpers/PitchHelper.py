@@ -29,7 +29,7 @@ def get_num_from_name(name):
                 "C9": 120, "C#9": 121, "Db9": 121, "D9": 122, "D#9": 123, "Eb9": 123, "E9": 124, "F9": 125,
                 "F#9": 126, "Gb9": 126, "G9": 127, "G#9": 128, "Ab9": 128, "A9": 129, "A#9": 130, "Bb9": 130, "B9": 131,
                 }
-    return note_num[name.upper()]
+    return note_num[name]
 
 
 def get_freq_from_name(name):
