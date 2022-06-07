@@ -26,7 +26,7 @@ class Wave_Adder:
         audio = np.zeros(self.samples)
         for osc in self.oscillators:
             new_audio = osc.get_instr_wave()
-            if len(new_audio)==len(audio)+1:
+            if len(new_audio) == len(audio)+1:
                 new_audio = new_audio[0:len(new_audio)-1]
             audio = np.add(audio, new_audio)
         audio = audio // len(self.oscillators)

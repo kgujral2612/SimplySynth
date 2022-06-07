@@ -24,6 +24,7 @@ class WaveTable:
         elif self.wave_type == 4:
             return Triangle.Triangle_Oscillator(freq=f, duration=d).get_wave()
         elif self.wave_type == 5:
+            self.envelope = 2
             return oboe(frequency=f, duration=d)
         elif self.wave_type == 6:
             self.envelope = 1
