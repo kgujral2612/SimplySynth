@@ -76,7 +76,7 @@ Trapezoidal, ADSR
 </ol>
 
 ### Filters
-Low-pass band, High-pass band
+Low-pass band
 
 ## Known Issues
 - Unable to play midi files that don’t consistently contain a “note-off” message for every “note-on”
@@ -84,6 +84,7 @@ Low-pass band, High-pass band
 - ‘Click’ sound can be heard while playing some midi files
 - Selecting multiple options on a huge midi file is computationally expensive and takes more time
 - Aleatoric mode only plays for major notes
+- Violin is not in the GUI
 
 ## Extensions
 <ol>
