@@ -25,9 +25,8 @@ All the tasks were accomplished through gitlab merge requests and thus can be ve
 </ol>
 
 
-
 ## Compositions 
-Check out a few pre-recorded examples [here](https://gitlab.cecs.pdx.edu/sound-engineering/simplysynth/-/tree/main/Files/wav%20files/savedrecording).
+Check out a few pre-recorded examples [here](https://gitlab.cecs.pdx.edu/sound-engineering/simplysynth/-/tree/main/Files/wav%20files/savedrecording) or [here](https://gitlab.cecs.pdx.edu/sound-engineering/simplysynth/-/tree/main/Files/SimplySynthFinalDemo.mp4)
 
  ## Running the code
  Please install these libraries using the following bash command:
