@@ -26,21 +26,41 @@ class WaveTable:
         elif self.wave_type == 5:
             return oboe(frequency=f, duration=d)
         elif self.wave_type == 6:
+            self.envelope = 1
             return flute(frequency=f, duration=d)
         elif self.wave_type == 7:
             return bell(frequency=f, duration=d)
+        elif self.wave_type == 8:
+            self.envelope = 2
+            return violin(frequency=f,duration=d)
 
     def get_envelope(self, audio):
         if self.envelope is None:
             return audio
         if self.envelope == 1:
             return trap_ar(audio)
+        if self.envelope == 3:
+            return lfo_amp(audio, freq=5)
         return adsr(audio)
 
     def tabulate(self):
         for start_time, notes in self.midi_dict.items():
+
             for note in notes:
-                self.overlay(self.get_envelope(self.get_type_wave(f=note[0], d=note[1])), start_time)
+                
+                if self.wave_type==6:
+                    wave = self.get_type_wave(f=note[0], d=note[1])                   
+                    wave = lfo_amp(wave, freq=4)
+                    wave = self.get_envelope(wave)
+                    wave = flute_noise(wave)
+                elif self.wave_type==8:
+                    wave = self.get_type_wave(f=note[0], d=note[1]) 
+                    wave = lfo_amp(wave, freq=4)                 
+                    wave = self.get_envelope(wave)
+                else:
+                    wave = self.get_envelope(self.get_type_wave(f=note[0], d=note[1]))
+                
+                self.overlay(wave, start_time)
         self.song = self.song * (2 ** 15 // 2) / np.max(np.abs(self.song))
         return self.song.astype(np.int16)
 
