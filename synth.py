@@ -7,7 +7,7 @@
 
 import simpleaudio as sa
 from scipy.io import wavfile
-from Helpers import PygameHelper
+from helpers import pygamehelper
 import pygame
 import pygame_gui
 import numpy as np
@@ -52,11 +52,11 @@ while is_running:
                 box_color=np.zeros(3)
         if event.type == pygame.MOUSEBUTTONDOWN:
                 if button_layout_rect1.collidepoint(event.pos):
-                    PygameHelper.mode_1_window()
+                    pygamehelper.mode_1_window()
                 if button_layout_rect2.collidepoint(event.pos):
-                    PygameHelper.mode_2_window()
+                    pygamehelper.mode_2_window()
                 if button_layout_rect3.collidepoint(event.pos):
-                    PygameHelper.mode_3_window()        
+                    pygamehelper.mode_3_window()        
    
 
     button_text1 = font.render('Mode 1', True,'#FAF0E6')

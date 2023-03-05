@@ -1,7 +1,7 @@
 import numpy as np
 import pygame
 import pygame_gui
-import InterfaceHandler
+import interface_handler
 
 
 #def attributes():
@@ -152,7 +152,7 @@ def mode_1_window():
                                 beat_arr.append(float(line))
                             b.close()
 
-                    InterfaceHandler.play_notes(notes = note_arr, beats = beat_arr, wave_type=wavetype, effect=effects, filter_type=filters, envelope=envelopes)
+                    interface_handler.play_notes(notes = note_arr, beats = beat_arr, wave_type=wavetype, effect=effects, filter_type=filters, envelope=envelopes)
                 if path1_input_rect.collidepoint(event.pos):
                     # Toggle the active_1 variable.
                     active_1 = not active_1
@@ -404,7 +404,7 @@ def mode_2_window():
                     coloren=np.zeros(3)
                     coloren[2]=1
                 if play_button_rect.collidepoint(event.pos):
-                    InterfaceHandler.play_midi(path = wave_path,wave_type=wavetype, effect=effects, filter_type=filters, envelope=envelopes)
+                    interface_handler.play_midi(path = wave_path,wave_type=wavetype, effect=effects, filter_type=filters, envelope=envelopes)
                 if path_input_rect.collidepoint(event.pos):
                     # Toggle the active_1 variable.
                     active_1 = not active_1
@@ -607,7 +607,7 @@ def mode_3_window():
                     coloren[2]=1
                 if play_button_rect.collidepoint(event.pos):
 
-                    InterfaceHandler.play_aleatoric(root_note=root_note,bpm = int(tempo),beats=int(beats),wave_type=wavetype, envelope=envelopes)
+                    interface_handler.play_aleatoric(root_note=root_note,bpm = int(tempo),beats=int(beats),wave_type=wavetype, envelope=envelopes)
                 # If the user clicked on the input_box rect.
                 if path1_input_rect.collidepoint(event.pos):
                     # Toggle the active_1 variable.

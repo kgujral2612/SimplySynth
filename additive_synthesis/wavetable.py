@@ -1,6 +1,6 @@
-from Oscillators import Square, SawTooth
-from Instruments.Sounds import *
-from Envelopes.Envelope import *
+from oscillators import sawtooth, square
+from instruments.sounds import *
+from envelopes.envelope import *
 
 
 class WaveTable:
@@ -16,13 +16,13 @@ class WaveTable:
     # Wave Type: Sine (1), Square (2), Sawtooth (3), Triangle (4), Oboe (5)
     def get_type_wave(self, f, d):
         if self.wave_type == 1:
-            return Sine.Sine_Oscillator(freq=f, duration=d).get_wave()
+            return sine.Sine_Oscillator(freq=f, duration=d).get_wave()
         elif self.wave_type == 2:
-            return Square.Square_Oscillator(freq=f, duration=d).get_wave()
+            return square.Square_Oscillator(freq=f, duration=d).get_wave()
         elif self.wave_type == 3:
-            return SawTooth.SawTooth_Oscillator(freq=f, duration=d).get_wave()
+            return sawtooth.SawTooth_Oscillator(freq=f, duration=d).get_wave()
         elif self.wave_type == 4:
-            return Triangle.Triangle_Oscillator(freq=f, duration=d).get_wave()
+            return triangle.Triangle_Oscillator(freq=f, duration=d).get_wave()
         elif self.wave_type == 5:
             self.envelope = 2
             return oboe(frequency=f, duration=d)

@@ -1,5 +1,5 @@
 import numpy as np
-from Oscillators import Sine
+from oscillators import sine
 
 
 def trap_ar_ramp_calc(data_len, ramp):
@@ -63,7 +63,7 @@ def noise_ar(samples, ramp=0.25):
 
 def lfo_amp(samples,freq=4):
     duration = len(samples)/48000
-    lfo_wave = Sine.Sine_Oscillator(freq=freq,duration=duration).get_lfo_wave()
+    lfo_wave = sine.Sine_Oscillator(freq=freq,duration=duration).get_lfo_wave()
     final_data = (np.multiply(samples, lfo_wave)).astype(np.int16)
     return final_data
 

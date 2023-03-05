@@ -15,11 +15,11 @@
 ###########################################################################
 import numpy as np
 
-from Helpers import MidiHelper
-from Helpers.PitchHelper import *
-from AdditiveSynthesis import WaveTable
-from DataAugmentation.Filters import *
-from DataAugmentation.Effects import *
+from helpers import midihelper
+from helpers.pitchhelper import *
+from additive_synthesis import wavetable
+from data_augmentation.filters import *
+from data_augmentation.effects import *
 import simpleaudio as sa
 from scipy.io import wavfile
 
@@ -78,7 +78,7 @@ def play_notes(notes, beats=None, bpm=120, wave_type=1, envelope=None, effect=No
     # Step-2: create the audio
     rate = 48000
     synth_wave_path = create_synth_file_path("Files/play_notes.mid", wave_type, envelope, effect, filter_type)
-    audio = WaveTable.WaveTable(duration_freq_dict, duration, wave_type, envelope, rate).tabulate()
+    audio = wavetable.WaveTable(duration_freq_dict, duration, wave_type, envelope, rate).tabulate()
     if not wave_type:
         wave_type = 1
     # Step-3: apply filters
@@ -104,9 +104,9 @@ def play_midi(path=None, wave_type=1, envelope=None, effect=None, filter_type=No
     if not wave_type:
         wave_type = 1
     # Step-1: read midi file
-    result = MidiHelper.Midi_Helper.input_midifile(path)
+    result = midihelper.Midi_Helper.input_midifile(path)
     if result.length > 0:
-        midi_info_list = MidiHelper.Midi_Helper.midi_info(result)
+        midi_info_list = midihelper.Midi_Helper.midi_info(result)
         rate = 48000  # default rate
         val = 0
         key = 0
@@ -119,7 +119,7 @@ def play_midi(path=None, wave_type=1, envelope=None, effect=None, filter_type=No
 
         # Step-2: create the audio
         synth_wave_path = create_synth_file_path(path, wave_type, envelope, effect, filter_type)
-        audio = WaveTable.WaveTable(midi_info_list, duration, wave_type, envelope, rate).tabulate()
+        audio = wavetable.WaveTable(midi_info_list, duration, wave_type, envelope, rate).tabulate()
 
         # Step-3: apply filters
         if filter_type:
@@ -149,13 +149,13 @@ def play_aleatoric(root_note, bpm, beats,  wave_type=1, envelope=None):
     curr = duration
     final = []
     while True:
-        root_data = WaveTable.WaveTable(duration_freq_dict, duration, wave_type, envelope, rate).tabulate()
+        root_data = wavetable.WaveTable(duration_freq_dict, duration, wave_type, envelope, rate).tabulate()
         final = root_data
         for i in range(beats-1):
             note = random.choice(key_arr)
             note_freq = get_freq_from_num(note)
             duration_freq_dict[0]=[(note_freq,duration)]
-            note_data = WaveTable.WaveTable(duration_freq_dict, duration, wave_type, envelope, rate).tabulate()
+            note_data = wavetable.WaveTable(duration_freq_dict, duration, wave_type, envelope, rate).tabulate()
             final = np.concatenate((final, note_data), axis=None)
         play_obj = sa.play_buffer(final, 1, 2, 48000)
         play_obj.wait_done()
