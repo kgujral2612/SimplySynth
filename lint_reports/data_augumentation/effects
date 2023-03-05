@@ -1,0 +1,19 @@
+************* Module effects
+data_augmentation/effects.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+data_augmentation/effects.py:8:0: E0401: Unable to import 'envelopes' (import-error)
+data_augmentation/effects.py:9:0: E0401: Unable to import 'oscillators' (import-error)
+data_augmentation/effects.py:11:0: C0116: Missing function or method docstring (missing-function-docstring)
+data_augmentation/effects.py:18:0: C0116: Missing function or method docstring (missing-function-docstring)
+data_augmentation/effects.py:28:4: W0621: Redefining name 'env_noise' from outer scope (line 26) (redefined-outer-name)
+data_augmentation/effects.py:26:0: C0116: Missing function or method docstring (missing-function-docstring)
+data_augmentation/effects.py:36:15: E1124: Argument 'axis' passed by position and keyword in function call (redundant-keyword-arg)
+data_augmentation/effects.py:27:4: W0612: Unused variable 'sampling_rate' (unused-variable)
+data_augmentation/effects.py:43:0: C0116: Missing function or method docstring (missing-function-docstring)
+data_augmentation/effects.py:51:0: C0116: Missing function or method docstring (missing-function-docstring)
+data_augmentation/effects.py:59:0: C0116: Missing function or method docstring (missing-function-docstring)
+data_augmentation/effects.py:66:0: C0116: Missing function or method docstring (missing-function-docstring)
+data_augmentation/effects.py:9:0: W0611: Unused sine imported from oscillators (unused-import)
+
+------------------------------------------------------------------
+Your code has been rated at 4.58/10 (previous run: 4.38/10, +0.21)
+

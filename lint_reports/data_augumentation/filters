@@ -1,0 +1,9 @@
+************* Module filters
+data_augmentation/filters.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+data_augmentation/filters.py:4:0: C0116: Missing function or method docstring (missing-function-docstring)
+data_augmentation/filters.py:5:4: C0103: Variable name "a" doesn't conform to snake_case naming style (invalid-name)
+data_augmentation/filters.py:103:4: C0200: Consider using enumerate instead of iterating with range and len (consider-using-enumerate)
+
+------------------------------------------------------------------
+Your code has been rated at 7.50/10 (previous run: 6.88/10, +0.62)
+

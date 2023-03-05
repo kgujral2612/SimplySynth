@@ -1,0 +1,16 @@
+************* Module sawtooth
+oscillators/sawtooth.py:19:0: C0301: Line too long (149/100) (line-too-long)
+oscillators/sawtooth.py:27:0: C0301: Line too long (102/100) (line-too-long)
+oscillators/sawtooth.py:29:0: C0305: Trailing newlines (trailing-newlines)
+oscillators/sawtooth.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+oscillators/sawtooth.py:6:0: C0103: Class name "SawTooth_Oscillator" doesn't conform to PascalCase naming style (invalid-name)
+oscillators/sawtooth.py:6:0: C0115: Missing class docstring (missing-class-docstring)
+oscillators/sawtooth.py:8:4: R0913: Too many arguments (6/5) (too-many-arguments)
+oscillators/sawtooth.py:15:4: C0116: Missing function or method docstring (missing-function-docstring)
+oscillators/sawtooth.py:21:4: C0116: Missing function or method docstring (missing-function-docstring)
+oscillators/sawtooth.py:24:4: C0116: Missing function or method docstring (missing-function-docstring)
+oscillators/sawtooth.py:26:8: C0103: Variable name "y" doesn't conform to snake_case naming style (invalid-name)
+
+------------------------------------------------------------------
+Your code has been rated at 5.00/10 (previous run: 4.55/10, +0.45)
+

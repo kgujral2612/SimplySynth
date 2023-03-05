@@ -1,0 +1,22 @@
+************* Module sine
+oscillators/sine.py:24:0: C0303: Trailing whitespace (trailing-whitespace)
+oscillators/sine.py:29:0: C0301: Line too long (249/100) (line-too-long)
+oscillators/sine.py:30:0: C0303: Trailing whitespace (trailing-whitespace)
+oscillators/sine.py:38:0: C0301: Line too long (114/100) (line-too-long)
+oscillators/sine.py:49:0: C0305: Trailing newlines (trailing-newlines)
+oscillators/sine.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+oscillators/sine.py:10:0: C0103: Class name "Sine_Oscillator" doesn't conform to PascalCase naming style (invalid-name)
+oscillators/sine.py:10:0: C0115: Missing class docstring (missing-class-docstring)
+oscillators/sine.py:12:4: R0913: Too many arguments (6/5) (too-many-arguments)
+oscillators/sine.py:20:4: C0116: Missing function or method docstring (missing-function-docstring)
+oscillators/sine.py:26:4: C0116: Missing function or method docstring (missing-function-docstring)
+oscillators/sine.py:32:4: C0116: Missing function or method docstring (missing-function-docstring)
+oscillators/sine.py:35:4: C0116: Missing function or method docstring (missing-function-docstring)
+oscillators/sine.py:37:8: C0103: Variable name "y" doesn't conform to snake_case naming style (invalid-name)
+oscillators/sine.py:41:4: C0116: Missing function or method docstring (missing-function-docstring)
+oscillators/sine.py:43:8: C0103: Variable name "y" doesn't conform to snake_case naming style (invalid-name)
+oscillators/sine.py:46:4: C0116: Missing function or method docstring (missing-function-docstring)
+
+------------------------------------------------------------------
+Your code has been rated at 4.52/10 (previous run: 4.19/10, +0.32)
+

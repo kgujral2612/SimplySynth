@@ -1,0 +1,27 @@
+************* Module synth
+synth.py:54:0: W0311: Bad indentation. Found 16 spaces, expected 12 (bad-indentation)
+synth.py:55:0: W0311: Bad indentation. Found 20 spaces, expected 16 (bad-indentation)
+synth.py:56:0: W0311: Bad indentation. Found 16 spaces, expected 12 (bad-indentation)
+synth.py:57:0: W0311: Bad indentation. Found 20 spaces, expected 16 (bad-indentation)
+synth.py:58:0: W0311: Bad indentation. Found 16 spaces, expected 12 (bad-indentation)
+synth.py:59:48: C0303: Trailing whitespace (trailing-whitespace)
+synth.py:59:0: W0311: Bad indentation. Found 20 spaces, expected 16 (bad-indentation)
+synth.py:60:0: C0303: Trailing whitespace (trailing-whitespace)
+synth.py:95:0: C0305: Trailing newlines (trailing-newlines)
+synth.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+synth.py:17:0: E1101: Module 'pygame' has no 'init' member (no-member)
+synth.py:35:0: C0103: Constant name "is_running" doesn't conform to UPPER_CASE naming style (invalid-name)
+synth.py:39:25: E1101: Module 'pygame' has no 'QUIT' member (no-member)
+synth.py:40:12: C0103: Constant name "is_running" doesn't conform to UPPER_CASE naming style (invalid-name)
+synth.py:41:25: E1101: Module 'pygame' has no 'MOUSEMOTION' member (no-member)
+synth.py:53:25: E1101: Module 'pygame' has no 'MOUSEBUTTONDOWN' member (no-member)
+synth.py:8:0: W0611: Unused simpleaudio imported as sa (unused-import)
+synth.py:9:0: W0611: Unused wavfile imported from scipy.io (unused-import)
+synth.py:12:0: W0611: Unused import pygame_gui (unused-import)
+synth.py:11:0: C0411: third party import "import pygame" should be placed before "from helpers import pygamehelper" (wrong-import-order)
+synth.py:12:0: C0411: third party import "import pygame_gui" should be placed before "from helpers import pygamehelper" (wrong-import-order)
+synth.py:13:0: C0411: third party import "import numpy as np" should be placed before "from helpers import pygamehelper" (wrong-import-order)
+
+------------------------------------------------------------------
+Your code has been rated at 4.06/10 (previous run: 4.06/10, +0.00)
+

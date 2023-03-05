@@ -1,0 +1,11 @@
+************* Module waveadder
+additive_synthesis/waveadder.py:22:0: C0301: Line too long (120/100) (line-too-long)
+additive_synthesis/waveadder.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+additive_synthesis/waveadder.py:11:0: C0103: Class name "Wave_Adder" doesn't conform to PascalCase naming style (invalid-name)
+additive_synthesis/waveadder.py:11:0: C0115: Missing class docstring (missing-class-docstring)
+additive_synthesis/waveadder.py:17:4: C0116: Missing function or method docstring (missing-function-docstring)
+additive_synthesis/waveadder.py:25:4: C0116: Missing function or method docstring (missing-function-docstring)
+
+-------------------------------------------------------------------
+Your code has been rated at 7.14/10 (previous run: 10.00/10, -2.86)
+

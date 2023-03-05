@@ -1,0 +1,22 @@
+************* Module pitchhelper
+helpers/pitchhelper.py:3:0: C0301: Line too long (113/100) (line-too-long)
+helpers/pitchhelper.py:14:0: C0301: Line too long (111/100) (line-too-long)
+helpers/pitchhelper.py:16:0: C0301: Line too long (111/100) (line-too-long)
+helpers/pitchhelper.py:18:0: C0301: Line too long (111/100) (line-too-long)
+helpers/pitchhelper.py:20:0: C0301: Line too long (111/100) (line-too-long)
+helpers/pitchhelper.py:22:0: C0301: Line too long (111/100) (line-too-long)
+helpers/pitchhelper.py:24:0: C0301: Line too long (111/100) (line-too-long)
+helpers/pitchhelper.py:25:0: C0301: Line too long (101/100) (line-too-long)
+helpers/pitchhelper.py:26:0: C0301: Line too long (120/100) (line-too-long)
+helpers/pitchhelper.py:27:0: C0301: Line too long (107/100) (line-too-long)
+helpers/pitchhelper.py:28:0: C0301: Line too long (120/100) (line-too-long)
+helpers/pitchhelper.py:29:0: C0301: Line too long (107/100) (line-too-long)
+helpers/pitchhelper.py:30:0: C0301: Line too long (120/100) (line-too-long)
+helpers/pitchhelper.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+helpers/pitchhelper.py:7:0: C0116: Missing function or method docstring (missing-function-docstring)
+helpers/pitchhelper.py:11:0: C0116: Missing function or method docstring (missing-function-docstring)
+helpers/pitchhelper.py:35:0: C0116: Missing function or method docstring (missing-function-docstring)
+
+----------------------------------------------------------------------
+Your code has been rated at -14.29/10 (previous run: -15.71/10, +1.43)
+

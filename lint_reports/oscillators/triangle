@@ -1,0 +1,16 @@
+************* Module triangle
+oscillators/triangle.py:18:0: C0301: Line too long (166/100) (line-too-long)
+oscillators/triangle.py:26:0: C0301: Line too long (102/100) (line-too-long)
+oscillators/triangle.py:28:0: C0305: Trailing newlines (trailing-newlines)
+oscillators/triangle.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+oscillators/triangle.py:6:0: C0103: Class name "Triangle_Oscillator" doesn't conform to PascalCase naming style (invalid-name)
+oscillators/triangle.py:6:0: C0115: Missing class docstring (missing-class-docstring)
+oscillators/triangle.py:7:4: R0913: Too many arguments (6/5) (too-many-arguments)
+oscillators/triangle.py:14:4: C0116: Missing function or method docstring (missing-function-docstring)
+oscillators/triangle.py:20:4: C0116: Missing function or method docstring (missing-function-docstring)
+oscillators/triangle.py:23:4: C0116: Missing function or method docstring (missing-function-docstring)
+oscillators/triangle.py:25:8: C0103: Variable name "y" doesn't conform to snake_case naming style (invalid-name)
+
+------------------------------------------------------------------
+Your code has been rated at 5.00/10 (previous run: 4.55/10, +0.45)
+

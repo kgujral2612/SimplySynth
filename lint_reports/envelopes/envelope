@@ -1,0 +1,16 @@
+************* Module envelope
+envelopes/envelope.py:43:0: C0301: Line too long (106/100) (line-too-long)
+envelopes/envelope.py:69:0: C0305: Trailing newlines (trailing-newlines)
+envelopes/envelope.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+envelopes/envelope.py:2:0: E0401: Unable to import 'oscillators' (import-error)
+envelopes/envelope.py:5:0: C0116: Missing function or method docstring (missing-function-docstring)
+envelopes/envelope.py:16:0: C0116: Missing function or method docstring (missing-function-docstring)
+envelopes/envelope.py:22:0: C0116: Missing function or method docstring (missing-function-docstring)
+envelopes/envelope.py:42:0: C0116: Missing function or method docstring (missing-function-docstring)
+envelopes/envelope.py:47:0: C0116: Missing function or method docstring (missing-function-docstring)
+envelopes/envelope.py:59:0: C0116: Missing function or method docstring (missing-function-docstring)
+envelopes/envelope.py:64:0: C0116: Missing function or method docstring (missing-function-docstring)
+
+------------------------------------------------------------------
+Your code has been rated at 7.27/10 (previous run: 7.09/10, +0.18)
+
