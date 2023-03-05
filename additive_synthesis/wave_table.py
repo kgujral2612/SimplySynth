@@ -3,7 +3,7 @@ from instruments.sounds import *
 from envelopes.envelope import *
 
 
-class WaveTable:
+class wave_table:
 
     def __init__(self, midi_dict, midi_length, wave_type=1, envelope=None, sample_rate=48000):
         self.midi_dict = midi_dict

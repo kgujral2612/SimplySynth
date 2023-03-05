@@ -8,7 +8,7 @@ import numpy as np
 #
 # Adds 2 waves of equal sample rate and duration
 #
-class Wave_Adder:
+class wave_adder:
 
     def __init__(self, oscillators, duration=1, sample_rate=48000):
         self.oscillators = oscillators
