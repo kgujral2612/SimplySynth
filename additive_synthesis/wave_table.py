@@ -21,13 +21,13 @@ class WaveTable:
         """ Returns the wave of a certain type.
             Wave Type: Sine (1), Square (2), Sawtooth (3), Triangle (4), Oboe (5)"""
         if self.wave_type == 1:
-            return sine.Sine_Oscillator(freq=freq, duration=duration).get_wave()
+            return sine.SineOscillator(freq=freq, duration=duration).get_wave()
         if self.wave_type == 2:
-            return square.Square_Oscillator(freq=freq, duration=duration).get_wave()
+            return square.SquareOscillator(freq=freq, duration=duration).get_wave()
         if self.wave_type == 3:
-            return sawtooth.SawTooth_Oscillator(freq=freq, duration=duration).get_wave()
+            return sawtooth.SawToothOscillator(freq=freq, duration=duration).get_wave()
         if self.wave_type == 4:
-            return triangle.Triangle_Oscillator(freq=freq, duration=duration).get_wave()
+            return triangle.TriangleOscillator(freq=freq, duration=duration).get_wave()
         if self.wave_type == 5:
             self.envelope = 2
             return oboe(frequency=freq, duration=duration)
