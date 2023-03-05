@@ -16,7 +16,7 @@ def oboe(frequency, duration, components=10):
         a = coeffs[i]
         sine_list.append(sine.Sine_Oscillator(freq=f, amp=a, duration=duration))
         f = f + frequency
-    return white_noise(wave_adder.wave_adder(sine_list, duration=duration).mixer())
+    return white_noise(wave_adder.WaveAdder(sine_list, duration=duration).mixer())
 
 
 # flute
@@ -30,7 +30,7 @@ def flute(frequency, duration, components=10):
         if i==0:
             f=0
         f = f + frequency
-    return wave_adder.wave_adder(sine_list, duration=duration).instr_mixer()
+    return wave_adder.WaveAdder(sine_list, duration=duration).instr_mixer()
 
 
 # bell
@@ -42,7 +42,7 @@ def bell(frequency, duration, components=9):
     for i in range(components):
         sine_list.append(sine.Sine_Oscillator(freq=(frequency * freq_coeffs[i]), amp=a, duration=duration))
         a /= 2.0
-    return white_noise(wave_adder.wave_adder(sine_list, duration=duration).mixer())
+    return white_noise(wave_adder.WaveAdder(sine_list, duration=duration).mixer())
 
 
 def violin(frequency, duration, components=20):
@@ -53,4 +53,4 @@ def violin(frequency, duration, components=20):
         a = coeffs[i]
         sine_list.append(sine.Sine_Oscillator(freq=f, amp=a, duration=duration))
         f = f + frequency
-    return wave_adder.wave_adder(sine_list, duration=duration).instr_mixer()
+    return wave_adder.WaveAdder(sine_list, duration=duration).instr_mixer()

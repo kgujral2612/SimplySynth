@@ -1,8 +1,10 @@
+""" this module applies filters on a given input sound """
 import numpy as np
 
 
 def low_pass_filter(input_data):
-    a = [0.0007402732643054117,
+    """ applies a low-pass band filter on the given sound """
+    coefficients = [0.0007402732643054117,
          -0.0007116178196449282,
          -0.0012364542225753877,
          0.0004878382037768346,
@@ -95,20 +97,20 @@ def low_pass_filter(input_data):
          0.0007402732643054117]
 
     # Reading the WAV file
-    n_conv = len(a)
+    n_conv = len(coefficients)
     new_data = np.zeros(len(input_data))
     data = np.zeros(len(input_data) + n_conv)
 
     # Creating the samples including a N length block of zeros
-    for i in range(len(input_data)):
-        data[i + n_conv] = input_data[i]
+    for i, in_data in enumerate(input_data):
+        data[i + n_conv] = in_data
 
     # Outer loop for each sample
     for i in range(len(data)):
         # For calculating the sum of multiplication for the filter.
         total = 0
         for j in range(n_conv):
-            total += a[j] * data[i - j]
+            total += coefficients[j] * data[i - j]
             # Skipping N block of zeros
         if i - n_conv >= 0:
             new_data[i - n_conv] = total
