@@ -42,10 +42,12 @@ Check out a few pre-recorded examples [here](https://gitlab.cecs.pdx.edu/sound-e
 
 Load the GUI- Note: after typing the file name in the input box, press enter.
 ```bash
+cd src
 python synth.py
 ```
 Alternatively, you could also run examples:
 ```bash
+cd src
 python examples.py
 ```
 ## Features
